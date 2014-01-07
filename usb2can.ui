@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>USB2CAN</class>
+ <widget class="QMainWindow" name="USB2CAN">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTreeView" name="treeView"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuUSB_to_CAN_compact">
+    <property name="title">
+     <string>USB-to-CAN compact</string>
+    </property>
+    <addaction name="actionDevOpen"/>
+    <addaction name="actionDevClose"/>
+    <addaction name="separator"/>
+    <addaction name="actionDevReset"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuReceiver">
+    <property name="title">
+     <string>Receiver</string>
+    </property>
+    <addaction name="actionRcvStart"/>
+    <addaction name="actionRcvStop"/>
+    <addaction name="separator"/>
+    <addaction name="actionRcvFilter"/>
+    <addaction name="actionRcvCommand"/>
+    <addaction name="separator"/>
+    <addaction name="actionRcvSend"/>
+   </widget>
+   <widget class="QMenu" name="menuCommunication_protocol">
+    <property name="title">
+     <string>Communication protocol</string>
+    </property>
+    <addaction name="actionProtoNew"/>
+    <addaction name="actionProtoOpen"/>
+    <addaction name="actionProtoEdit"/>
+    <addaction name="actionProtoSave"/>
+    <addaction name="actionProtoSaveAs"/>
+    <addaction name="actionProtoClose"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionHelpAbout"/>
+    <addaction name="separator"/>
+    <addaction name="actionHelpIndex"/>
+    <addaction name="actionHelpContext"/>
+   </widget>
+   <addaction name="menuUSB_to_CAN_compact"/>
+   <addaction name="menuReceiver"/>
+   <addaction name="menuCommunication_protocol"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionRcvStart">
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionRcvStop">
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionRcvFilter">
+   <property name="text">
+    <string>Filter</string>
+   </property>
+  </action>
+  <action name="actionRcvCommand">
+   <property name="text">
+    <string>Command</string>
+   </property>
+  </action>
+  <action name="actionRcvSend">
+   <property name="text">
+    <string>Send</string>
+   </property>
+  </action>
+  <action name="actionDevOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionDevClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionDevReset">
+   <property name="text">
+    <string>Reset driver</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionProtoNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionProtoOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionProtoEdit">
+   <property name="text">
+    <string>Edit</string>
+   </property>
+  </action>
+  <action name="actionProtoSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionProtoSaveAs">
+   <property name="text">
+    <string>Save as...</string>
+   </property>
+  </action>
+  <action name="actionProtoClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionHelpAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionHelpIndex">
+   <property name="text">
+    <string>Index</string>
+   </property>
+  </action>
+  <action name="actionHelpContext">
+   <property name="text">
+    <string>Context</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>activated()</signal>
+   <receiver>USB2CAN</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

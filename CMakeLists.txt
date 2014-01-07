@@ -1,0 +1,16 @@
+project(usb2can)
+cmake_minimum_required(VERSION 2.6)
+find_package(Qt4 REQUIRED QtCore QtGui QtXml)
+include(${QT_USE_FILE})
+
+set(ECI_INCLUDE /usr/include/eci)
+set(ECI_LIB -leci109DriverLinux)
+set(UI_LIST usb2can.ui)
+
+qt4_wrap_ui(FORM_LIST ${UI_LIST})
+include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR} ${ECI_INCLUDE})
+set(usb2can_SRCS usb2can.cpp main.cpp)
+qt4_automoc(${usb2can_SRCS})
+add_executable(usb2can eci.cpp ${usb2can_SRCS} ${FORM_LIST})
+target_link_libraries(usb2can ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${ECI_LIB})
+install(TARGETS usb2can RUNTIME DESTINATION bin)
