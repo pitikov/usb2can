@@ -11,12 +11,22 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>IXXAT USB-to-CAN compact manager</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTreeView" name="treeView"/>
+     <widget class="QTreeView" name="treeViewReceiver"/>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableViewMsgDetail">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>200</height>
+       </size>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -58,9 +68,12 @@
     </property>
     <addaction name="actionProtoNew"/>
     <addaction name="actionProtoOpen"/>
+    <addaction name="separator"/>
     <addaction name="actionProtoEdit"/>
+    <addaction name="separator"/>
     <addaction name="actionProtoSave"/>
     <addaction name="actionProtoSaveAs"/>
+    <addaction name="separator"/>
     <addaction name="actionProtoClose"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -78,97 +91,315 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="dockWidgetActionLog">
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea|Qt::TopDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Actions log</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetActionsLogContents">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QListView" name="listViewActionsLog"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidgetStatus">
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Status</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetStatusContents">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTreeView" name="treeViewStatus"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBarUSB_to_CAN_compact">
+   <property name="windowTitle">
+    <string>USB-to-CAN compact</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionDevOpen"/>
+   <addaction name="actionDevClose"/>
+   <addaction name="separator"/>
+   <addaction name="actionDevReset"/>
+  </widget>
+  <widget class="QToolBar" name="toolBarRcv">
+   <property name="windowTitle">
+    <string>Receiver</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionRcvStart"/>
+   <addaction name="actionRcvStop"/>
+   <addaction name="separator"/>
+   <addaction name="actionRcvFilter"/>
+   <addaction name="actionRcvCommand"/>
+   <addaction name="separator"/>
+   <addaction name="actionRcvSend"/>
+  </widget>
+  <widget class="QToolBar" name="toolBarProto">
+   <property name="windowTitle">
+    <string>Communication protocol</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionProtoNew"/>
+   <addaction name="actionProtoOpen"/>
+   <addaction name="separator"/>
+   <addaction name="actionProtoEdit"/>
+   <addaction name="separator"/>
+   <addaction name="actionProtoSave"/>
+   <addaction name="actionProtoSaveAs"/>
+   <addaction name="separator"/>
+   <addaction name="actionProtoClose"/>
+  </widget>
+  <widget class="QToolBar" name="toolBarHelp">
+   <property name="windowTitle">
+    <string>Help</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionHelpAbout"/>
+   <addaction name="separator"/>
+   <addaction name="actionHelpIndex"/>
+   <addaction name="actionHelpContext"/>
+  </widget>
   <action name="actionRcvStart">
+   <property name="icon">
+    <iconset theme="mail-receive">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Start</string>
    </property>
   </action>
   <action name="actionRcvStop">
+   <property name="icon">
+    <iconset theme="process-stop">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Stop</string>
    </property>
   </action>
   <action name="actionRcvFilter">
+   <property name="icon">
+    <iconset theme="view-filter">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Filter</string>
    </property>
   </action>
   <action name="actionRcvCommand">
+   <property name="icon">
+    <iconset theme="system-run">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Command</string>
    </property>
   </action>
   <action name="actionRcvSend">
+   <property name="icon">
+    <iconset theme="mail-send">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Send</string>
    </property>
   </action>
   <action name="actionDevOpen">
+   <property name="icon">
+    <iconset theme="network-connect">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Open</string>
    </property>
   </action>
   <action name="actionDevClose">
+   <property name="icon">
+    <iconset theme="network-disconnect">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Close</string>
    </property>
   </action>
   <action name="actionDevReset">
+   <property name="icon">
+    <iconset theme="system-reboot">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Reset driver</string>
    </property>
   </action>
   <action name="actionQuit">
+   <property name="icon">
+    <iconset theme="application-exit">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Quit</string>
    </property>
   </action>
   <action name="actionProtoNew">
+   <property name="icon">
+    <iconset theme="document-new">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>New</string>
    </property>
   </action>
   <action name="actionProtoOpen">
+   <property name="icon">
+    <iconset theme="document-open">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Open</string>
    </property>
   </action>
   <action name="actionProtoEdit">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="document-edit">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Edit</string>
    </property>
   </action>
   <action name="actionProtoSave">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="document-save">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Save</string>
    </property>
   </action>
   <action name="actionProtoSaveAs">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="document-save-as">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Save as...</string>
    </property>
   </action>
   <action name="actionProtoClose">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="document-close">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Close</string>
    </property>
   </action>
   <action name="actionHelpAbout">
+   <property name="icon">
+    <iconset theme="help-about">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
   </action>
   <action name="actionHelpIndex">
+   <property name="icon">
+    <iconset theme="help-contents">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Index</string>
    </property>
   </action>
   <action name="actionHelpContext">
+   <property name="icon">
+    <iconset theme="help-contextual">
+     <normaloff/>
+    </iconset>
+   </property>
    <property name="text">
     <string>Context</string>
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>treeViewReceiver</tabstop>
+  <tabstop>tableViewMsgDetail</tabstop>
+  <tabstop>treeViewStatus</tabstop>
+  <tabstop>listViewActionsLog</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

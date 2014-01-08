@@ -6,6 +6,6 @@ int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
     usb2can foo;
-    foo.show();
+    foo.showMaximized();
     return app.exec();
 }
